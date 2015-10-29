@@ -1,25 +1,10 @@
 #include<stdlib.h>
 #include<stdio.h>
 #include<time.h>
-int analyze(int Answer[] , int *P)
-{
-	int temp , j; 
-	for(temp=1;temp<*P;temp++)
-	{
-		for(j=0;j<temp;j++)
-		{
-			if(Answer[j]==Answer[temp])
-			{
-				return 1;
-			}
-		}	
-	}
-	return 0;
-}
 int main(int argc , char *argv[])
 {
+	
 	int P=(int)*argv[1]-48 , N=(int)*argv[2]-48;
-	//int P=9 , N=9;
 	if(P>N)
 	{
 		printf("The number of positions is no allow to be bigger than the number of integers!!");
@@ -29,12 +14,27 @@ int main(int argc , char *argv[])
 	srand(time(NULL));
 	for(j=0;;j++)
 	{
+		w=0;
 		for(i=0;i<P;i++)
 		{
 			Answer[i]=(rand()%N+1);
 		}
-		;
-		if((w=analyze(&Answer[0],&P))==0)
+		for(temp=1;temp<P;temp++)
+		{
+			for(j=0;j<temp;j++)
+			{
+				if(Answer[j]==Answer[temp])
+				{
+					i=temp;
+					w=1;
+				}
+			}
+		}
+		if(w==1)
+		{
+			continue;
+		}
+		else
 		{
 			break;
 		}
@@ -43,20 +43,33 @@ int main(int argc , char *argv[])
 	{
 		printf("%d ",Answer[i]);
 	}
-	printf("\nPlease enter %d numbers you guess(1~%d)no repeat:\n",P,N);
+	printf("\n");
+	printf("Please enter %d numbers you guess(1~%d)no repeat:\n",P,N);
 	for(Count=0;;Count++)
 	{
 		for(j=0;;j++)
 		{
+			w=0;
 			printf("The %d times guess:",(Count+1));
 			for(i=0;i<P;i++)
 			{
 				scanf("%d",&Guess[i]);
 			}
-			w=analyze(&Guess[0],&P);
+			for(temp=1;temp<P;temp++)
+			{
+				for(j=0;j<temp;j++)
+				{
+					if(Guess[j]==Guess[temp])
+					{
+						i=temp;
+						w=1;
+					}
+				}
+			}
 			if(w==1)
 			{
 				printf("Error enter!!\n");
+				continue;
 			}
 			else
 			{
