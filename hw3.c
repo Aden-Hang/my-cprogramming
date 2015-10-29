@@ -16,10 +16,10 @@ int analyze(int Answer[] , int *P)
 	}
 	return 0;
 }
-int main()
+int main(int argc , int argv[])
 {
-	//int P=(int)*argv[1]-48 , N=(int)*argv[2]-48;
-	int P=9 , N=9;
+	int P=(int)*argv[1]-48 , N=(int)*argv[2]-48;
+	//int P=9 , N=9;
 	if(P>N)
 	{
 		printf("The number of positions is no allow to be bigger than the number of integers!!");
