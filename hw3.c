@@ -16,6 +16,17 @@ int analyze(int Answer[] , int *P)
 	}
 	return 0;
 }
+void check(int Answer[] , int Guess[] , P)
+{
+	int i , j ;
+	for(i=0;i<P;i++)
+	{	
+		for(j=0;j<P;j++)
+		{
+			
+		}
+	}	
+}
 int main(int argc , char *argv[])
 {
 	int P=(int)*argv[1]-48 , N=(int)*argv[2]-48;
@@ -53,8 +64,8 @@ int main(int argc , char *argv[])
 			{
 				scanf("%d",&Guess[i]);
 			}
-			w=analyze(&Guess[0],&P);
-			if(w==1)
+			
+			if((w=analyze(&Guess[0],&P))==1)
 			{
 				printf("Error enter!!\n");
 			}
