@@ -49,7 +49,7 @@ int main(int argc , char *argv[])
 		printf("The number of positions is no allow to be bigger than the number of integers!!");
 		return 0;
 	} 
-	int Answer[P],i,j,q=1,w=0,Right_Number=0,Right_Place=0,Count,temp,Guess[P],Bingo;
+	int Answer[P],i,j,w,Right_Place,Count,Guess[P],Bingo;
 	srand(time(NULL));
 	for(j=0;;j++)
 	{
