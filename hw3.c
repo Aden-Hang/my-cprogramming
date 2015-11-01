@@ -16,27 +16,40 @@ int analyze(int Answer[] , int *P)
 	}
 	return 0;
 }
-void check(int Answer[] , int Guess[] , P)
+int check(int Answer[] , int Guess[] ,int *P)
 {
-	int i , j ;
-	for(i=0;i<P;i++)
-	{	
-		for(j=0;j<P;j++)
+	int i , j , Right_Place = 0 , Right_Number = 0;
+	for(i=0;i<*P;i++)
 		{
-			
+			for(j=0;j<*P;j++)
+			{
+				if(Answer[j]==Guess[i])
+				{
+					Right_Number++;
+					if(Answer[i]==Guess[i])
+					{
+						Right_Place++;
+						Right_Number--;
+					}
+				}
+			}
 		}
-	}	
+	if(Right_Place!=*P)
+	{
+		printf("%dH %dX\n",Right_Place,Right_Number);
+	}
+	return Right_Place ;
 }
 int main(int argc , char *argv[])
 {
-	int P=(int)*argv[1]-48 , N=(int)*argv[2]-48;
-	//int P=9 , N=9;
+	//int P=(int)*argv[1]-48 , N=(int)*argv[2]-48;
+	int P=4 , N=9;
 	if(P>N)
 	{
 		printf("The number of positions is no allow to be bigger than the number of integers!!");
 		return 0;
 	} 
-	int Answer[P],i,j,q=1,w=0,Right_Number=0,Right_Place=0,Count,temp,Guess[P];
+	int Answer[P],i,j,q=1,w=0,Right_Number=0,Right_Place=0,Count,temp,Guess[P],Bingo;
 	srand(time(NULL));
 	for(j=0;;j++)
 	{
@@ -74,29 +87,12 @@ int main(int argc , char *argv[])
 				break;
 			}
 		}
-		for(i=0;i<P;i++)
-		{
-			for(j=0;j<P;j++)
-			{
-				if(Answer[j]==Guess[i])
-				{
-					Right_Number++;
-					if(Answer[i]==Guess[i])
-					{
-						Right_Place++;
-						Right_Number--;
-					}
-				}
-			}
-		}
-		if(Right_Place==P)
+		Bingo=check(&Answer[0],&Guess[0],&P);
+		if(Bingo==P)
 		{	
 			printf("BINGO!!\n");
 			break;
 		}
-		printf("%dH %dX\n",Right_Place,Right_Number);
-		Right_Place=0;
-		Right_Number=0;
 	}
 	return 0;
 }
