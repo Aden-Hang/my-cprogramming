@@ -45,36 +45,42 @@ int split(int a[],int low,int high)
 int main(int argc , char *argv[])
 {	
 	srand(time(NULL));
-	int N = (int)*argv[1] , D = (int)*argv[2];
-	int i , a[N];
-	float a1[N];
-	
+	int N = 10 , D = 2;
+	unsigned int i , a[N];
+	float a1[N];	
 	if(D==1)
 	{	
-		
+		printf("------The numbers below is the origin-------\n");
 		for(i=0;i<N;i++)
 		{
-			a1[i]=(float)((rand()*3*8*7*2)%100000)/10;
+			a[i]=rand()*3*189*7*9%10000000000;
+			a1[i]=(float)a[i]*8/1000000;
+			printf("%11f\n",a1[i]);
 		}
-		quicksort(a1,0,N-1);
+		printf("-------The numbers below is after quicksort--------\n");
+		quicksort(a,0,N-1);
 		for(i=0;i<N;i++)
 		{
-			printf("%12f\n",a1[i]);
+			a1[i]=(float)a[i]*8/1000000;
+			printf("%11f\n",a1[i]);
 		}
 	}
-	if(D==0)
+	else if(D==0)
 	{	
-		
+		printf("------The numbers below is the origin-------\n");
 		for(i=0;i<N;i++)
 		{
 			a[i]=(rand()%10000);
+			printf("%d\n",a[i]);
 		}
 		quicksort(a,0,N-1);
+		printf("-------The numbers below is after quicksort--------\n");
 		for(i=0;i<N;i++)
 		{
 			printf("%d\n",a[i]);
 		}
 	}
-	
+	else
+		printf("error enter");
 	return 0;
 }
